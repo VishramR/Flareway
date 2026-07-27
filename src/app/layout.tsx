@@ -3,6 +3,7 @@ import { Montserrat, Heebo } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import { Toaster } from "sonner";
 
 export const montserrat = Montserrat({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className={`${montserrat.variable} ${heebo.variable}`}>
         <Navbar />
         {children}
+        <Toaster position="top-right" richColors closeButton />
         <Footer />
       </body>
     </html>

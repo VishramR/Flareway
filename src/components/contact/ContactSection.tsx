@@ -1,9 +1,48 @@
-import { Building2, Clock3, Mail, MapPin, Phone } from "lucide-react";
+"use client";
+
+import { Clock3, Mail, MapPin, Phone } from "lucide-react";
 
 import Container from "@/components/common/Container";
 import FluidContainer from "@/components/common/FluidContainer";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+
+import { contactSchema, ContactFormData } from "@/lib/validations/contact";
 
 export default function ContactSection() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message);
+      }
+
+      toast.success("Thank you! We'll contact you shortly.");
+
+      reset();
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
   return (
     <FluidContainer className="bg-slate-50">
       <Container>
@@ -109,7 +148,7 @@ export default function ContactSection() {
                 Get Free Consultation
               </h2>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block font-medium text-gray-700">
@@ -117,10 +156,16 @@ export default function ContactSection() {
                     </label>
 
                     <input
+                      {...register("fullName")}
                       type="text"
                       className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600"
                       placeholder="John Doe"
                     />
+                    {errors.fullName && (
+                      <p className="mt-2 text-sm text-red-500">
+                        {errors.fullName.message}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -129,6 +174,7 @@ export default function ContactSection() {
                     </label>
 
                     <input
+                      {...register("companyName")}
                       type="text"
                       className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600"
                       placeholder="Company Name"
@@ -141,10 +187,16 @@ export default function ContactSection() {
                     </label>
 
                     <input
+                      {...register("email")}
                       type="email"
                       className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600"
                       placeholder="you@example.com"
                     />
+                    {errors.email && (
+                      <p className="mt-2 text-sm text-red-500">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -153,10 +205,16 @@ export default function ContactSection() {
                     </label>
 
                     <input
+                      {...register("phone")}
                       type="tel"
                       className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600"
                       placeholder="+91 XXXXX XXXXX"
                     />
+                    {errors.phone && (
+                      <p className="mt-2 text-sm text-red-500">
+                        {errors.phone.message}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -164,8 +222,11 @@ export default function ContactSection() {
                       Service Required
                     </label>
 
-                    <select className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600">
-                      <option>Select a Service</option>
+                    <select
+                      {...register("service")}
+                      className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600"
+                    >
+                      <option value="">Select a Service</option>
                       <option>Website Development</option>
                       <option>Ecommerce Website Development</option>
                       <option>SEO Services</option>
@@ -176,6 +237,11 @@ export default function ContactSection() {
                       <option>Content Marketing</option>
                       <option>Other</option>
                     </select>
+                    {errors.service && (
+                      <p className="mt-2 text-sm text-red-500">
+                        {errors.service.message}
+                      </p>
+                    )}
                   </div>
 
                   <div>
@@ -183,7 +249,10 @@ export default function ContactSection() {
                       Project Budget
                     </label>
 
-                    <select className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600">
+                    <select
+                      {...register("budget")}
+                      className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600"
+                    >
                       <option>Select Budget</option>
                       <option>Under ₹25,000</option>
                       <option>₹25,000 - ₹50,000</option>
@@ -200,17 +269,24 @@ export default function ContactSection() {
                   </label>
 
                   <textarea
+                    {...register("message")}
                     rows={6}
                     className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-600"
                     placeholder="Tell us about your project..."
                   />
+                  {errors.message && (
+                    <p className="mt-2 text-sm text-red-500">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full rounded-2xl bg-blue-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl"
+                  disabled={isSubmitting}
+                  className="w-full rounded-2xl bg-blue-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  Get Free Consultation
+                  {isSubmitting ? "Sending..." : "Get Free Consultation"}
                 </button>
               </form>
             </div>
