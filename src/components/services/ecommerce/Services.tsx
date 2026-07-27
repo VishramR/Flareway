@@ -1,12 +1,12 @@
 import {
   Store,
-  ShoppingBag,
   Package,
   ShoppingCart,
   CreditCard,
   Truck,
   Wrench,
-  Boxes,
+  Layers3,
+  LaptopMinimal,
 } from "lucide-react";
 
 import Container from "@/components/common/Container";
@@ -20,16 +20,16 @@ const services = [
       "We develop fully customized ecommerce websites that reflect your brand identity while providing a seamless shopping experience.",
   },
   {
-    icon: ShoppingBag,
-    title: "Shopify Website Development",
+    icon: Layers3,
+    title: "Custom Ecommerce Development",
     description:
-      "Build modern Shopify stores with secure payment gateways, responsive design, and easy product management.",
+      "Develop fully customized ecommerce solutions tailored to your business, with scalable architecture, intuitive user experiences, and modern web technologies.",
   },
   {
-    icon: Boxes,
-    title: "WooCommerce Website Development",
+    icon: LaptopMinimal,
+    title: "Responsive Storefront Development",
     description:
-      "Create flexible WooCommerce websites integrated with WordPress for businesses seeking complete control and scalability.",
+      "Build fast, mobile-friendly online storefronts that provide seamless shopping experiences across desktops, tablets, and smartphones.",
   },
   {
     icon: Package,
