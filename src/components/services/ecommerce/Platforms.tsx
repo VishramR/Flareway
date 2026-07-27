@@ -1,38 +1,40 @@
-import { ShoppingBag, Store, Globe, Code2, Layers3 } from "lucide-react";
+import { Layers3, LaptopMinimal, ShieldCheck } from "lucide-react";
 
 import Container from "@/components/common/Container";
 import FluidContainer from "@/components/common/FluidContainer";
+import { FaReact } from "react-icons/fa6";
+import { RiNextjsFill } from "react-icons/ri";
 
 const platforms = [
   {
-    icon: ShoppingBag,
-    title: "Shopify",
+    icon: RiNextjsFill,
+    title: "Next.js",
     description:
-      "Launch secure, scalable Shopify stores with powerful ecommerce features and easy product management.",
+      "Build high-performance ecommerce websites using Next.js with excellent speed, SEO, and user experience.",
   },
   {
-    icon: Store,
-    title: "WooCommerce",
+    icon: FaReact,
+    title: "React",
     description:
-      "Flexible WooCommerce solutions integrated with WordPress for complete customization and business growth.",
-  },
-  {
-    icon: Globe,
-    title: "WordPress",
-    description:
-      "SEO-friendly ecommerce websites built on WordPress with excellent performance and scalability.",
-  },
-  {
-    icon: Code2,
-    title: "Custom PHP Solutions",
-    description:
-      "Tailor-made ecommerce solutions designed around your unique business processes and requirements.",
+      "Develop modern, interactive storefronts with React for fast navigation and a seamless shopping experience.",
   },
   {
     icon: Layers3,
-    title: "Laravel",
+    title: "Custom Ecommerce Solutions",
     description:
-      "Enterprise-grade ecommerce applications built using Laravel for security, scalability, and long-term performance.",
+      "Tailor-made ecommerce platforms designed around your business workflows, products, and customer requirements.",
+  },
+  {
+    icon: LaptopMinimal,
+    title: "Responsive Web Applications",
+    description:
+      "Mobile-first ecommerce websites that deliver a consistent shopping experience across all devices.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure Payment Integrations",
+    description:
+      "Integrate trusted payment gateways with secure checkout flows to provide safe and reliable online transactions.",
   },
 ];
 
