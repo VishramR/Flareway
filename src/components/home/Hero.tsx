@@ -30,7 +30,7 @@ export default function Hero() {
               Flareway Technologies
             </p>
 
-            <h1 className="mb-8 text-5xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="mb-8 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-6xl">
               Digital Marketing & Website Development Company in Coimbatore
             </h1>
 
