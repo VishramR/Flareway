@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#07142F]/90 via-[#07142F]/70 to-black/20" />
 
       <Container className="relative z-10">
-        <section className="flex min-h-screen items-center py-32">
+        <section className="flex items-center py-32">
           <div className="max-w-[760px]">
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-blue-400">
               Flareway Technologies
