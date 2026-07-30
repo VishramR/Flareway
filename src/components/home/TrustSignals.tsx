@@ -8,11 +8,39 @@ import {
   Target,
   Zap,
 } from "lucide-react";
-
 import Container from "@/components/common/Container";
 import FluidContainer from "@/components/common/FluidContainer";
+import { LucideIcon } from "lucide-react";
 
-const trustItems = [
+interface TrustItem {
+  title: string;
+  icon: LucideIcon;
+}
+
+interface TrustCardProps {
+  item: TrustItem;
+}
+
+function TrustCard({ item }: TrustCardProps) {
+  const Icon = item.icon;
+
+  return (
+    <div
+      key={item.title}
+      className="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
+    >
+      <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
+        <Icon size={24} />
+      </div>
+
+      <h3 className="text-lg font-semibold leading-7 text-gray-900">
+        {item.title}
+      </h3>
+    </div>
+  );
+}
+
+const trustItems: readonly TrustItem[] = [
   {
     title: "SEO-Friendly & High-Performance Websites",
     icon: Globe,
@@ -68,20 +96,7 @@ export default function TrustSignals() {
             {trustItems.map((item) => {
               const Icon = item.icon;
 
-              return (
-                <div
-                  key={item.title}
-                  className="group rounded-3xl border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
-                >
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
-                    <Icon size={24} />
-                  </div>
-
-                  <h3 className="text-lg font-semibold leading-7 text-gray-900">
-                    {item.title}
-                  </h3>
-                </div>
-              );
+              return <TrustCard key={item.title} item={item} />;
             })}
           </div>
         </section>

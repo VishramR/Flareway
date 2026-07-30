@@ -3,21 +3,38 @@ import { ArrowRight } from "lucide-react";
 
 import Container from "@/components/common/Container";
 import FluidContainer from "@/components/common/FluidContainer";
+import Image from "next/image";
 
 export default function AboutHero() {
   return (
-    <FluidContainer className="bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#2563EB] text-white">
-      <Container>
+    // <FluidContainer className="bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#2563EB] text-white">
+    <FluidContainer className="relative overflow-hidden">
+      <Image
+        src="/images/about/about_banner.png"
+        alt="Digital Marketing & Website Development Company in Coimbatore"
+        fill
+        priority
+        quality={100}
+        sizes="100vw"
+        className="object-cover"
+      />
+
+      {/* Base Dark Overlay */}
+      <div className="absolute inset-0 bg-slate-950/60" />
+
+      {/* Left Gradient for Content */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#07142F]/90 via-[#07142F]/70 to-black/20" />
+      <Container className="relative z-10">
         <section className="pt-40 pb-24 lg:pt-30 lg:pb-32">
           <div className="max-w-4xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
               <div className="h-2 w-2 rounded-full bg-blue-300" />
-              <h1 className="text-sm font-medium">
+              <h1 className="text-sm uppercase font-semibold tracking-[0.25em] text-white font-medium">
                 About Flareway Technologies
               </h1>
             </div>
 
-            <p className="mb-6 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            <p className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-5xl">
               Your Trusted Website Development & Digital Marketing Partner in
               Coimbatore
             </p>
