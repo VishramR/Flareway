@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 import Container from "@/components/common/Container";
+import Image from "next/image";
 
 const serviceLinks = [
   {
@@ -72,8 +73,16 @@ export default function Navbar() {
           {/* Logo */}
 
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-blue-600 shadow-lg">
-              <span className="text-xl font-bold">F</span>
+            <div
+              className={`flex h-13 w-13 items-center justify-center rounded-full ${!scrolled && "bg-white"} text-blue-600`}
+            >
+              <Image
+                src="/images/logo/flareway_favicon.png"
+                alt="Flareway_logo"
+                width={40}
+                height={50}
+                // className="w-auto h-auto"
+              />
             </div>
 
             <p

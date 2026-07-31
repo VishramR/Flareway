@@ -10,10 +10,13 @@ export default function Hero() {
       <Container>
         <section className="pt-36 pb-24 lg:pt-30 lg:pb-32">
           <div className="max-w-4xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
+            {/* <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
               <div className="h-2 w-2 rounded-full bg-blue-300" />
               Contact Flareway Technologies
-            </div>
+            </div> */}
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-blue-400">
+              Contact Flareway Technologies
+            </p>
 
             <h1 className="mb-4 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
               Let's Build Your Business Success Together

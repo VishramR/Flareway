@@ -27,12 +27,9 @@ export default function AboutHero() {
       <Container className="relative z-10">
         <section className="pt-40 pb-24 lg:pt-30 lg:pb-32">
           <div className="max-w-4xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
-              <div className="h-2 w-2 rounded-full bg-blue-300" />
-              <h1 className="text-sm uppercase font-semibold tracking-[0.25em] text-white font-medium">
-                About Flareway Technologies
-              </h1>
-            </div>
+            <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-blue-400">
+              About Flareway Technologies
+            </p>
 
             <p className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-5xl">
               Your Trusted Website Development & Digital Marketing Partner in

@@ -8,6 +8,7 @@ import {
 
 import Container from "@/components/common/Container";
 import FluidContainer from "@/components/common/FluidContainer";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -16,7 +17,15 @@ export default function Footer() {
         <div className="grid gap-12 py-20 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
-            <h3 className="mb-6 text-3xl font-bold">Flareway</h3>
+            {/* <h3 className="mb-6 text-3xl font-bold">Flareway</h3> */}
+            <div className="mb-6">
+              <Image
+                src="/images/logo/flareway_logo1.png"
+                alt="footer_logo"
+                width={100}
+                height={100}
+              />
+            </div>
 
             <p className="mb-8 leading-8 text-gray-600">
               We help businesses grow online through web development, digital
