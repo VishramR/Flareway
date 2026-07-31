@@ -19,13 +19,15 @@ export default function Footer() {
           <div>
             {/* <h3 className="mb-6 text-3xl font-bold">Flareway</h3> */}
             <div className="mb-6">
-              <Image
-                src="/images/logo/flareway_logo1.png"
-                alt="footer_logo"
-                width={100}
-                height={100}
-                // className="w-auto h-auto"
-              />
+              <Link href="/">
+                <Image
+                  src="/images/logo/flareway_logo1.png"
+                  alt="footer_logo"
+                  width={100}
+                  height={100}
+                  // className="w-auto h-auto"
+                />
+              </Link>
             </div>
 
             <p className="mb-8 leading-8 text-gray-600">
