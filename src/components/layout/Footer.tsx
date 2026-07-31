@@ -24,6 +24,7 @@ export default function Footer() {
                 alt="footer_logo"
                 width={100}
                 height={100}
+                // className="w-auto h-auto"
               />
             </div>
 

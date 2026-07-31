@@ -73,17 +73,22 @@ export default function Navbar() {
           {/* Logo */}
 
           <Link href="/" className="flex items-center gap-3">
-            <div
+            {/* <div
               className={`flex h-13 w-13 items-center justify-center rounded-full ${!scrolled && "bg-white"} text-blue-600`}
-            >
-              <Image
-                src="/images/logo/flareway_favicon.png"
-                alt="Flareway_logo"
-                width={40}
-                height={50}
-                // className="w-auto h-auto"
-              />
-            </div>
+            > */}
+            <Image
+              src={
+                scrolled
+                  ? "/images/logo/flareway_favicon.png"
+                  : "/images/logo/flareway_white_transparent.png"
+              }
+              // src="/images/logo/flareway_white.png"
+              alt="Flareway_logo"
+              width={40}
+              height={50}
+              // className="w-auto h-auto"
+            />
+            {/* </div> */}
 
             <p
               className={`text-2xl font-bold transition-colors duration-300 ${
