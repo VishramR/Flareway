@@ -9,6 +9,22 @@ import FinalCTA from "@/components/home/FinalCTA";
 import WhyChooseAbout from "@/components/about/WhyChooseAbout";
 import AboutIndustries from "@/components/about/AboutIndustries";
 import ClientTrust from "@/components/about/ClientTrust";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Flareway Technologies, a leading digital marketing agency in Coimbatore dedicated to growing businesses online.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us | Flareway Technologies",
+    description:
+      "Learn about Flareway Technologies, a leading digital marketing agency in Coimbatore.",
+    url: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (

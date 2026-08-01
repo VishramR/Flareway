@@ -28,7 +28,7 @@ export const serviceSeo = {
   description:
     'Improve your Google Maps rankings, increase local search visibility, and generate qualified business enquiries with customized Local SEO strategies, Google Business Profile optimization, citation management, and location-based SEO.',
 },
-'branding': {
+'branding-services': {
   title: 'Branding Company in Coimbatore | Flareway Technologies',
   description:
     'Professional branding and creative design services in Coimbatore. Build a memorable brand with logo design, brand identity, corporate branding, marketing collateral, packaging design, and creative solutions.',

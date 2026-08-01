@@ -43,10 +43,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: seo.title,
+    title: {
+      absolute: seo.title,
+    },
     description: seo.description,
+
     alternates: {
       canonical: `/services/${slug}`,
+    },
+
+    openGraph: {
+      type: "website",
+      title: seo.title,
+      description: seo.description,
+      url: `/services/${slug}`,
+      siteName: "Flareway Technologies",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
     },
   };
 }

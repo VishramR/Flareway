@@ -17,12 +17,49 @@ export const heebo = Heebo({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.flarewaytechnologies.com"),
+
   title: {
-    default: "Flareway",
-    template: "%s | Flareway",
+    default: "Digital Marketing Agency in Coimbatore | Flareway Technologies",
+    template: "%s | Flareway Technologies",
   },
   description:
-    "Flareway is a Web Development and Digital Marketing agency helping businesses grow online with modern websites, SEO, and digital solutions.",
+    "Flareway Technologies is a digital marketing agency in Coimbatore offering SEO, Google Ads, social media marketing, website development and branding services.",
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    type: "website",
+    siteName: "Flareway Technologies",
+    title: "Digital Marketing Agency in Coimbatore | Flareway Technologies",
+    description:
+      "Grow your business online with SEO, Google Ads, social media marketing and website development services.",
+    url: "https://www.flarewaytechnologies.com/",
+    images: [
+      {
+        url: "/images/flareway_favicon.png",
+        width: 1200,
+        height: 630,
+        alt: "Flareway Technologies Digital Marketing",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Digital Marketing Agency in Coimbatore | Flareway Technologies",
+    description:
+      "SEO, Google Ads, social media marketing and website development services in Coimbatore.",
+    images: ["/images/flareway_favicon.png"],
+  },
+
   verification: {
     google: "Z1_R87Z9YtGaAYuiiEZ-5E7l-9OtyqidJuH-dy_C5hM",
   },
@@ -41,9 +78,7 @@ export default function RootLayout({
         <Toaster position="top-right" richColors closeButton />
         <Footer />
       </body>
-      {/* Google Tag Manager (GTM-KP5THJW4) */}
       <GoogleTagManager gtmId="GTM-KP5THJW4" />
-      {/* Google Analytics 4 (G-KV3R9526BF) */}
       <GoogleAnalytics gaId="G-KV3R9526BF" />
     </html>
   );
