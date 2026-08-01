@@ -94,7 +94,7 @@ export default function ContactSection() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
 
-                    <p className="mt-2 text-gray-600">+91 XXXXX XXXXX</p>
+                    <p className="mt-2 text-gray-600">+91 63814 93353</p>
                   </div>
                 </div>
 
@@ -108,7 +108,9 @@ export default function ContactSection() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
 
-                    <p className="mt-2 text-gray-600">hello@flareway.in</p>
+                    <p className="mt-2 text-gray-600">
+                      info@flarewaytechnologies.com
+                    </p>
                   </div>
                 </div>
 
