@@ -1,3 +1,4 @@
+import BlogSection from "@/components/home/BlogSection";
 import FAQ from "@/components/home/FAQ";
 import FinalCTA from "@/components/home/FinalCTA";
 import GrowthPartner from "@/components/home/GrowthPartner";
@@ -20,6 +21,7 @@ export default function Home() {
       <Process />
       <Industries />
       <Testimonials />
+      <BlogSection />
       <FAQ />
       <FinalCTA />
     </>

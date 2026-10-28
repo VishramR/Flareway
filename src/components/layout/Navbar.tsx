@@ -136,6 +136,10 @@ export default function Navbar() {
               </div>
             </div>
 
+            <Link href="/blog" className={navLinkClass}>
+              Blog
+            </Link>
+
             <Link href="/contact" className={navLinkClass}>
               Contact
             </Link>
@@ -203,6 +207,14 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
               >
                 About
+              </Link>
+
+              <Link
+                href="/blog"
+                className="rounded-xl px-4 py-3 font-medium text-gray-900 transition hover:bg-gray-100"
+                onClick={() => setMobileOpen(false)}
+              >
+                Blog
               </Link>
 
               <Link

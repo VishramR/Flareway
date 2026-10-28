@@ -52,7 +52,7 @@ export default function FAQ() {
   };
 
   return (
-    <FluidContainer className="bg-[#F8FAFC]">
+    <FluidContainer className="bg-white">
       <Container>
         <section className="py-20 lg:py-28">
           {/* Header */}

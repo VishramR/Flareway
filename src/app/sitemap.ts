@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
-import { serviceSeo } from '@/lib/serviceSeo' // Adjust path to where your serviceSeo is stored
+import { serviceSeo } from '@/lib/serviceSeo'
+import { getAllBlogs } from '@/lib/blogs'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://flarewaytechnologies.com'
+  const baseUrl = 'https://www.flarewaytechnologies.com'
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -23,6 +24,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
   ]
 
   const serviceRoutes: MetadataRoute.Sitemap = Object.keys(serviceSeo).map((slug) => ({
@@ -32,5 +39,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  return [...staticRoutes, ...serviceRoutes]
+  const blogRoutes: MetadataRoute.Sitemap = getAllBlogs().map((blog) => ({
+    url: `${baseUrl}/blog/${blog.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }))
+
+  return [...staticRoutes, ...serviceRoutes, ...blogRoutes]
 }

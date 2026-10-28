@@ -3,7 +3,7 @@ import { Resend } from "resend";
 
 import { contactSchema } from "@/lib/validations/contact";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || "re_dummy_for_build");
 
 export async function POST(request: Request) {
   try {
