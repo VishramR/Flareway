@@ -3,6 +3,7 @@ import { Montserrat, Heebo } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import ConsultationPopup from "@/components/common/ConsultationPopup";
 import { Toaster } from "sonner";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 
@@ -75,6 +76,7 @@ export default function RootLayout({
       <body className={`${montserrat.variable} ${heebo.variable}`}>
         <Navbar />
         {children}
+        <ConsultationPopup />
         <Toaster position="top-right" richColors closeButton />
         <Footer />
       </body>
