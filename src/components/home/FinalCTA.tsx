@@ -11,6 +11,7 @@ import {
 
 import Container from "@/components/common/Container";
 import FluidContainer from "@/components/common/FluidContainer";
+import Link from "next/link";
 
 const benefits = [
   { label: "Free business consultation", icon: MessageSquare },
@@ -81,14 +82,14 @@ export default function FinalCTA() {
                   />
                 </button>
 
-                <button className="group flex items-center justify-center gap-3 rounded-2xl border border-white/25 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15">
+                <Link href="/contact" className="group flex items-center justify-center gap-3 rounded-2xl border border-white/25 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15">
                   <Mail size={20} />
                   Get Free Consultation
                   <ArrowRight
                     size={18}
                     className="transition-transform duration-300 group-hover:translate-x-1"
                   />
-                </button>
+                </Link>
               </div>
             </div>
 

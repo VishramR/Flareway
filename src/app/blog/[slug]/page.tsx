@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }: Props) {
       name: "Flareway Technologies",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.flarewaytechnologies.com/images/logo/flareway_favicon.png",
+        url: "https://www.flarewaytechnologies.com/images/logo/flareway_white_transparent.png",
       },
     },
     datePublished: "2026-10-28T00:00:00.000Z",

@@ -50,7 +50,7 @@ export const blogs: BlogPost[] = [
     author: {
       name: "Flareway SEO Team",
       role: "Search Strategy & Technical SEO",
-      avatar: "/images/logo/flareway_favicon.png",
+      avatar: "/images/logo/flareway_white_transparent.png",
     },
     excerpt:
       "Choosing the right SEO company in Coimbatore can help your business improve online visibility, reach relevant customers, and generate more qualified enquiries. Here is your practical guide to evaluating strategy, deliverables, pricing, and long-term results.",
