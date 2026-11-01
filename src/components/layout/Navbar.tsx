@@ -44,6 +44,7 @@ const serviceLinks = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -58,14 +59,54 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinkClass = scrolled
+  // Prevent background body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileOpen]);
+
+  // Close mobile menu on resize to desktop or escape key
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileOpen) {
+        setMobileOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileOpen]);
+
+  const isLightNav = scrolled || mobileOpen;
+
+  const navLinkClass = isLightNav
     ? "font-medium text-gray-900 transition-colors duration-300 hover:text-blue-600"
     : "font-medium text-white transition-colors duration-300 hover:text-blue-200 [text-shadow:0_1px_3px_rgba(0,0,0,0.35)]";
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 shadow-sm backdrop-blur-md" : "bg-transparent"
+        mobileOpen
+          ? "bg-white shadow-md"
+          : scrolled
+          ? "bg-white/95 shadow-sm backdrop-blur-md"
+          : "bg-transparent"
       }`}
     >
       <Container>
@@ -73,26 +114,20 @@ export default function Navbar() {
           {/* Logo */}
 
           <Link href="/" className="flex items-center gap-3">
-            {/* <div
-              className={`flex h-13 w-13 items-center justify-center rounded-full ${!scrolled && "bg-white"} text-blue-600`}
-            > */}
             <Image
               src={
-                scrolled
+                isLightNav
                   ? "/images/logo/flareway_favicon.png"
                   : "/images/logo/flareway_white_transparent.png"
               }
-              // src="/images/logo/flareway_white.png"
               alt="Flareway_logo"
               width={40}
               height={50}
-              // className="w-auto h-auto"
             />
-            {/* </div> */}
 
             <p
               className={`text-2xl font-bold transition-colors duration-300 ${
-                scrolled
+                isLightNav
                   ? "text-gray-900"
                   : "text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.35)]"
               }`}
@@ -162,7 +197,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
             className={`rounded-xl p-2 transition lg:hidden ${
-              scrolled
+              isLightNav
                 ? "text-gray-900 hover:bg-gray-100"
                 : "text-white hover:bg-white/10"
             }`}
@@ -175,36 +210,63 @@ export default function Navbar() {
       {/* Mobile Menu */}
 
       {mobileOpen && (
-        <div className="border-t border-gray-200 bg-white/95 backdrop-blur-xl lg:hidden">
+        <div className="w-full max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain border-t border-gray-200 bg-white shadow-2xl lg:hidden">
           <Container>
-            <div className="flex flex-col py-6">
+            <div className="flex flex-col py-6 pb-24">
               <Link
                 href="/"
                 className="rounded-xl px-4 py-3 font-medium text-gray-900 transition hover:bg-gray-100"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  setServicesOpen(false);
+                }}
               >
                 Home
               </Link>
 
-              <div className="mt-2 px-4 pb-2 text-sm font-semibold uppercase tracking-wider text-blue-600">
-                Services
-              </div>
-
-              {serviceLinks.map((service) => (
-                <Link
-                  key={service.label}
-                  href={service.href}
-                  className="rounded-xl px-4 py-3 text-gray-700 transition hover:bg-blue-50 hover:text-blue-600"
-                  onClick={() => setMobileOpen(false)}
+              {/* Mobile Services Dropdown */}
+              <div className="flex flex-col">
+                <button
+                  type="button"
+                  onClick={() => setServicesOpen(!servicesOpen)}
+                  className="flex w-full items-center justify-between rounded-xl px-4 py-3 font-medium text-gray-900 transition hover:bg-gray-100"
+                  aria-expanded={servicesOpen}
                 >
-                  {service.label}
-                </Link>
-              ))}
+                  <span>Services</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-200 ${
+                      servicesOpen ? "rotate-180 text-blue-600" : "text-gray-500"
+                    }`}
+                  />
+                </button>
+
+                {servicesOpen && (
+                  <div className="my-1 ml-3 flex flex-col space-y-1 rounded-xl border-l-2 border-blue-500/40 bg-slate-50/80 py-1.5 pl-3 pr-2">
+                    {serviceLinks.map((service) => (
+                      <Link
+                        key={service.label}
+                        href={service.href}
+                        className="rounded-lg px-3 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-blue-50 hover:text-blue-600"
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setServicesOpen(false);
+                        }}
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <Link
                 href="/about"
-                className="mt-2 rounded-xl px-4 py-3 font-medium text-gray-900 transition hover:bg-gray-100"
-                onClick={() => setMobileOpen(false)}
+                className="rounded-xl px-4 py-3 font-medium text-gray-900 transition hover:bg-gray-100"
+                onClick={() => {
+                  setMobileOpen(false);
+                  setServicesOpen(false);
+                }}
               >
                 About
               </Link>
@@ -212,7 +274,10 @@ export default function Navbar() {
               <Link
                 href="/blog"
                 className="rounded-xl px-4 py-3 font-medium text-gray-900 transition hover:bg-gray-100"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  setServicesOpen(false);
+                }}
               >
                 Blog
               </Link>
@@ -220,15 +285,21 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 className="rounded-xl px-4 py-3 font-medium text-gray-900 transition hover:bg-gray-100"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  setServicesOpen(false);
+                }}
               >
                 Contact
               </Link>
 
               <Link
                 href="/contact"
-                className="mt-4 rounded-2xl bg-blue-600 px-6 py-4 text-center font-semibold text-white transition hover:bg-blue-700"
-                onClick={() => setMobileOpen(false)}
+                className="mt-5 rounded-2xl bg-blue-600 px-6 py-4 text-center font-semibold text-white transition hover:bg-blue-700 shadow-lg shadow-blue-600/25"
+                onClick={() => {
+                  setMobileOpen(false);
+                  setServicesOpen(false);
+                }}
               >
                 Get Free Quote
               </Link>
